@@ -1,0 +1,23 @@
+{
+    "errorCode": 0,
+    "data": [
+        {
+            "room_id": 8,
+            "room_address": "保利城花园保利城-1A1A302",
+            "bill_ispaid": 1,
+            "bill_fee": 0
+        },
+        {
+            "room_id": 132,
+            "room_address": "金海燕花园1栋1-1A",
+            "bill_ispaid": 1,
+            "bill_fee": 0
+        },
+        {
+            "room_id": 136,
+            "room_address": "测试用物业项目C1403",
+            "bill_ispaid": 0,
+            "bill_fee": 295.75
+        }
+    ]
+}
