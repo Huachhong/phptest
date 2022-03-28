@@ -6,7 +6,7 @@
  * Time: 15:46
  */
 spl_autoload_register(function ($class_name) {
-    echo $class_name . "\n";
+    //echo $class_name . "\n";
     $class_name = str_replace('\\', '/', $class_name);
     require_once $class_name . '.php';
 
