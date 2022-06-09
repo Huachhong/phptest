@@ -9,11 +9,11 @@
 function BubbleSort($arr) {
     $len = count($arr);
     for ($i = 0; $i < $len; $i++) {
-        for ($j = $i + 1; $j < $len; $j++) {
-            if ($arr[$i] > $arr[$j]) {
-                $tmp    = $arr[$i];
-                $arr[$i] = $arr[$j];
-                $arr[$j] = $tmp;
+        for ($j = 0; $j < $len - $i - 1; $j++) {
+            if ($arr[$j] > $arr[$j + 1]) {
+                $tmp    = $arr[$j];
+                $arr[$j] = $arr[$j + 1];
+                $arr[$j + 1] = $tmp;
             }
         }
         echo json_encode($arr) . PHP_EOL;
@@ -49,7 +49,7 @@ $arr = [12, 34, 9, 234, 13, 87, 32, 90, 25];
 //$arr = [3, 2, 4, 1];
 
 //冒泡排序
-//$arr = BubbleSort($arr);
+$arr = BubbleSort($arr);
 //快速排序
-$arr = QuickSort($arr);
+//$arr = QuickSort($arr);
 echo json_encode($arr) . PHP_EOL;
