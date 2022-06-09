@@ -17,4 +17,3 @@ class  foo
         return '我是subnamespace空间';
     }
 }
-?>

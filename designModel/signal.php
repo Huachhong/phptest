@@ -8,7 +8,8 @@
 
 class A {
     static protected $instan;
-    function __construct() {
+    //构造方法声明为private，防止创建对象
+    private function __construct() {
 
     }
     public function getInstance () {
@@ -16,5 +17,10 @@ class A {
             self::$instan = new self();
         }
         return self::$instan;
+    }
+    //禁止克隆
+    public function __clone()
+    {
+        trigger_error('clone is not allowed');
     }
 }

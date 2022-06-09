@@ -41,7 +41,23 @@ function QuickSort($arr) {
     return array_merge($low, array($mid), $hight);
 }
 
-
+function QuickSort2($arr) {
+    $len = count($arr);
+    if ($len <= 1) return $arr;
+    $low = [];
+    $up  = [];
+    $mid = $arr[0];
+    for ($i = 1; $i < $len; $i++) {
+        if ($arr[$i] > $mid) {
+            $up[] = $arr[$i];
+        } else {
+            $low[] = $arr[$i];
+        }
+    }
+    $low = QuickSort2($low);
+    $up  = QuickSort2($up);
+    return array_merge($low, array($mid), $up);
+}
 
 
 $arr = [12, 34, 9, 234, 13, 87, 32, 90, 25];
@@ -49,7 +65,7 @@ $arr = [12, 34, 9, 234, 13, 87, 32, 90, 25];
 //$arr = [3, 2, 4, 1];
 
 //冒泡排序
-$arr = BubbleSort($arr);
+//$arr = BubbleSort($arr);
 //快速排序
-//$arr = QuickSort($arr);
+$arr = QuickSort2($arr);
 echo json_encode($arr) . PHP_EOL;
