@@ -7,7 +7,12 @@
  */
 
 $arr = [12, 34, 9, 234, 12, 87, 32, 90, 25];
+$a = 100;
+$b = "ahb";
+//sleep(3);
+//var_dump(__FILE__);
 
-$arr = BubbleSort($arr);
+foreach ($arr as &$item) {
 
+}
 var_dump($arr);
