@@ -129,6 +129,37 @@ function merge($arr1, $arr2) {
     return $newarr;
 }
 
+function BullderSort($arr) {
+    $len = count($arr);
+    if ($len <= 1) {
+        return $arr;
+    }
+    for ($i = 0; $i < $len; $i++) {
+        for ($j = 0; $j < $len - $i - 1; $j++){
+            if ($arr[$j] > $arr[$j+1]) {
+                $tmp = $arr[$j];
+                $arr[$j] = $arr[$j + 1];
+                $arr[$j+1] = $tmp;
+            }
+        }
+    }
+    return $arr;
+}
+
+function BullderSort2($arr) {
+    $len = count($arr);
+    for ($i = 0; $i < $len - 1; $i++) {
+        for ($j = 0; $j < $len - $i - 1; $j++) {
+            if ($arr[$j] > $arr[$j+1]) {
+                $temp = $arr[$j];
+                $arr[$j] = $arr[$j+1];
+                $arr[$j+1] = $temp;
+            }
+        }
+    }
+    return $arr;
+}
+
 $arr = [12, 34, 9, 234, 13, 87, 32, 90, 25];
 
 //$arr = [3, 2, 4, 1];
@@ -138,5 +169,84 @@ $arr = [12, 34, 9, 234, 13, 87, 32, 90, 25];
 //快速排序
 //$arr = QuickSort2($arr);
 //归并排序
-$arr = mergeSort($arr);
+//$arr = mergeSort($arr);
+$arr = BullderSort($arr);
 echo json_encode($arr) . PHP_EOL;
+
+$arrsort = ["a" => 10, "d" => 1, "b" => 3];
+rsort($arrsort);
+echo json_encode($arrsort) . PHP_EOL;
+$timeDate = '2023-02-28 14:00:00';
+$lastTime = strtotime('-1 month', strtotime($timeDate));
+echo date("Y-m-d H:i:s", $lastTime) . PHP_EOL;
+$a = null;
+echo 'isset:' . isset($a) . PHP_EOL;
+
+$a = 1;
+$b = 1;
+if ($b = 2) $b++;
+if ($a || $b = 5) $a = $b++;
+echo $a . ' ' . $b . PHP_EOL;
+
+
+function fib($n) {
+    if ($n <= 2) return 1;
+    return fib($n-2) + fib($n-1);
+}
+
+//echo fib(100) . PHP_EOL ;
+
+function fibonacci($n)
+{
+    if ($n == 0) {
+        return 0;
+    } elseif ($n == 1) {
+        return 1;
+    }
+
+    $fib = array(0, 1);
+    for ($i = 2; $i <= $n; $i++) {
+        $fib[$i] = $fib[$i-1] + $fib[$i-2];
+    }
+
+    return $fib[$n];
+}
+
+
+//遍历某个目录
+function scan_dir($dir) {
+    $arr = [];
+    if (is_file($dir)) $arr[] = $dir;
+    $list = scandir($dir);
+
+    foreach($list as $val) {
+        if ($val == '..' || $val == ".") continue;
+        if (is_dir($dir . DIRECTORY_SEPARATOR . $val)) {
+            scan_dir($dir . DIRECTORY_SEPARATOR . $val);
+        }
+        $arr[] = $dir . DIRECTORY_SEPARATOR . $val;
+    }
+    return $arr;
+}
+
+function addFile($file) {
+    $fd = fopen($file, "a+");
+    if (flock($fd, LOCK_EX)) {
+        fwrite($fd, rand(1, 100) . PHP_EOL);
+        flock($fd, LOCK_UN);
+    }
+    fclose($fd);
+}
+function getContentFile($file) {
+    $fd = fopen($file, "r+");
+    while(! feof($fd)) {
+        echo fgets($fd);
+    }
+}
+
+addFile("hghg.txt");
+getContentFile("hghg.txt");
+
+var_dump(scan_dir(__DIR__)) . PHP_INT_MAX;
+
+
